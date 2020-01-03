@@ -166,6 +166,46 @@
 |158| [What is schematic](#what-is-schematic)|
 |159| [What is rule in Schematics?](#what-is-rule-in-schematics)|
 |160| [What is Schematics CLI?](#what-is-schematics-cli)|
+|161| [What are the best practices for security in angular?](#what-are-the-best-practices-for-security-in-angular)|
+|162| [What is Angular security model for preventing XSS attacks?](#what-is-angular-security-model-for-preventing-xss-attacks)|
+|163| [What is the role of template compiler for prevention of XSS attacks?](#what-is-the-role-of-template-compiler-for-prevention-of-xss-attacks)|
+|164| [What are the various security contexts in Angular?](#what-are-the-various-security-contexts-in-Angular)|
+|165| [What is Sanitization? Is angular supports it?](#what-is-sanitization?Is-angular-supports-it)|
+|166| [What is the purpose of innerHTML?](#what-is-the-purpose-of-innerhtml)|
+|167| [What is the difference between interpolated content and innerHTML?](#what-is-the-difference-between-interpolated-content-and-innerhtml)|
+|168| [How do you prevent automatic sanitization?](#how-do-you-prevent-automatic-sanitization)|
+|169| [Is safe to use direct DOM API methods in terms of security?](#is-safe-to-use-direct-dom-api-methods-in-terms-of-security)|
+|170| [What is DOM sanitizer?](#what-is-dom-sanitizer)|
+|171| [How do you support server side XSS protection in Angular application?](#how-do-you-support-server-side-xss-protection-in-angular-application)
+|172| [Is angular prevents http level vulnerabilities?](#is-angular-prevents-http-level-vulnerabilities)|
+|173| [What are Http Interceptors?](#what-are-http-interceptors)|
+|174| [What are the applications of HTTP interceptors?](#what-are-the-applications-of-http-interceptors)|
+|175| [Is multiple interceptors supported in Angular?](#is-multiple-interceptors-supported-in-angular)|
+|176| [How can I use interceptor for an entire application?](#how-can-i-use-interceptor-for-an-entire-application)|
+|177| [How does Angular simplifies Internationalization?](#how-does-angular-simplifies-internationalization)|
+|178| [How do you manually register locale data?](#how-do-you-manually-register-locale-data)|
+|179| [What are the four phases of template translation?](#what-are-the-four-phases-of-template-translation)|
+|180| [What is the purpose of i18n attribute?](#what-is-the-purpose-of-i18n-attribute)|
+|181| [What is the purpose of custom id?](#what-is-the-purpose-of-custom-id)|
+|182| [What happens if the custom id is not unique?](#what-happens-if-the-custom-id-is-not-unique)|
+|183| [Can I translate text without creating an element?](#can-i-translate-text-without-creating-an-element)|
+|184| [How can I translate attribute?](#how-can-i-translate-attribute)|
+|185| [List down the pluralization categories?](#list-down-the-pluralization-categories)|
+|186| [What is select ICU expression?](#what-is-select-icu-expression)|
+|187| [How do you report missing translations?](#how-do-you-report-missing-translations)|
+|188| [How do you provide build configuration for multiple locales?](#how-do-you-provide-build-configuration-for-multiple-locales)|
+|189| [What is an angular library?](#what-is-an-angular-library)|
+|190| [What is AOT compiler?](#what-is-aot-compiler)|
+|191| [](#)|
+|192| [](#)|
+|193| [](#)|
+|194| [](#)|
+|195| [](#)|
+|196| [](#)|
+|197| [](#)|
+|198| [](#)|
+|199| [](#)|
+|200| [](#)|
 
 1. ### What is Angular Framework?
 
@@ -2365,10 +2405,10 @@
      2. NgZone.run(callback): It evaluate the callback function inside the Angular zone.
      3. ChangeDetectorRef.detectChanges(): It detects only the components and it's children.
 
-    **[⬆ Back to Top](#table-of-contents)**
+     **[⬆ Back to Top](#table-of-contents)**
 
 152. ### What are the differences of various versions of Angular?
-    There are different versions of Angular framework. Let's see the features of all the various versions,
+     There are different versions of Angular framework. Let's see the features of all the various versions,
 
      1. Angular 1
         • Angular 1 (AngularJS) is the first angular framework released in the year 2010.
@@ -2406,7 +2446,7 @@
         • CLI Prompts capability provide an ability to ask questions to the user before they run. It is like interactive dialog between the           user and the CLI
         • With the improved CLI Prompts capability, it helps developers to make the decision. New ng commands ask users for routing and CSS           styles types(SCSS) and ng add @angular/material asks for themes and gestures or animations.
 
-     **[⬆ Back to Top](#table-of-contents)**
+      **[⬆ Back to Top](#table-of-contents)**
 
 153. ### What are the security principles in angular?
 		1.	You should avoid direct use of the DOM APIs.
@@ -2481,4 +2521,437 @@
 
      **[⬆ Back to Top](#table-of-contents)**
 
+161. ### What are the best practices for security in angular?
+     Below are the best practices of security in angular,
 
+     1. Use the latest Angular library releases
+     2. Don't modify your copy of Angular
+     3. Avoid Angular APIs marked in the documentation as “Security Risk.”
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+162. ### What is Angular security model for preventing XSS attacks?
+     Angular treats all values as untrusted by default. i.e, Angular sanitizes and escapes untrusted values When a value is inserted into the DOM from a template, via property, attribute, style, class binding, or interpolation.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+163. ### What is the role of template compiler for prevention of XSS attacks?
+     The offline template compiler prevents vulnerabilities caused by template injection, and greatly improves application performance. So it is recommended to use offline template compiler in production deployments without dynamically generating any template.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+164. ### What are the various security contexts in Angular?
+     Angular defines the following security contexts for sanitization,
+     1. **HTML:** It is used when interpreting a value as HTML such as binding to innerHtml.
+     2. **Style:** It is used when binding CSS into the style property.
+     3. **URL:** It is used for URL properties such as <a href>.
+     4. **Resource URL:** It is a URL that will be loaded and executed as code such as <script src>.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+165. ### What is Sanitization? Is angular supports it?
+     **Sanitization** is the inspection of an untrusted value, turning it into a value that's safe to insert into the DOM. Yes, Angular suppports sanitization. It sanitizes untrusted values for HTML, styles, and URLs but sanitizing resource URLs isn't possible because they contain arbitrary code.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+166. ### What is the purpose of innerHTML?
+     The innerHtml is a property of HTML-Elements, which allows you to set it's html-content programatically. Let's display the below html code snippet in a <div> tag as below using innerHTML binding,
+     ```html
+     <div [innerHTML]="htmlSnippet"></div>
+     ```
+     and define the htmlSnippet property from any component
+     ```javascript
+     export class myComponent {
+       htmlSnippet: string = '<b>Hello World</b>, Angular';
+     }
+     ```
+     Unfortunately this property could cause Cross Site Scripting (XSS) security bugs when improperly handled.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+167. ### What is the difference between interpolated content and innerHTML?
+     The main difference between interpolated and innerHTML code is the behavior of code interpreted. Interpolated content is always escaped i.e,  HTML isn't interpreted and the browser displays angle brackets in the element's text content. Where as in innerHTML binding, the content is interpreted i.e, the browser will convert < and > characters as HTMLEntities. For example, the usage in template would be as below,
+     ```html
+     <p>Interpolated value:</p>
+     <div >{{htmlSnippet}}</div>
+     <p>Binding of innerHTML:</p>
+     <div [innerHTML]="htmlSnippet"></div>
+     ```
+     and the property defined in a component.
+     ```javascript
+     export class InnerHtmlBindingComponent {
+       htmlSnippet = 'Template <script>alert("XSS Attack")</script> <b>Code attached</b>';
+     }
+     ```
+     Even though innerHTML binding create a chance of XSS attack, Angular recognizes the value as unsafe and automatically sanitizes it.
+     **[⬆ Back to Top](#table-of-contents)**
+
+168. ### How do you prevent automatic sanitization?
+     Sometimes the applications genuinely need to include executable code such as displaying <iframe> from an URL. In this case, you need to prevent automatic sanitization in Angular by saying that you inspected a value, checked how it was generated, and made sure it will always be secure. Basically it involves 2 steps,
+     i. Inject DomSanitizer: You can inject DomSanitizer in component as parameter in constructor
+     ii. Mark the trusted value by calling some of the below methods
+
+     1. bypassSecurityTrustHtml
+     2. bypassSecurityTrustScript
+     3. bypassSecurityTrustStyle
+     4. bypassSecurityTrustUrl
+     5. bypassSecurityTrustResourceUrl
+
+     For example,The  usage of dagerous url to trusted url would be as below,
+     ```javascript
+     constructor(private sanitizer: DomSanitizer) {
+       this.dangerousUrl = 'javascript:alert("XSS attack")';
+       this.trustedUrl = sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+169. ### Is safe to use direct DOM API methods in terms of security?
+     No,the built-in browser DOM APIs or methods don't automatically protect you from security vulnerabilities. In this case it is recommended to use Angular templates instead of directly interacting with DOM. If it is unavoidable then use the built-in Angular sanitization functions.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+170. ### What is DOM sanitizer?
+     DomSanitizer is used to help preventing Cross Site Scripting Security bugs (XSS) by sanitizing values to be safe to use in the different DOM contexts.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+171. ### How do you support server side XSS protection in Angular application?
+     The server-side XSS protection is supported in an angular application by using a templating language that automatically escapes values to prevent XSS vulnerabilities on the server. But don't use a templating language to generate Angular templates on the server side which creates a high risk of introducing template-injection vulnerabilities.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+172. ### Is angular prevents http level vulnerabilities?
+     Angular has built-in support for preventing http level vulnerabilities such as as cross-site request forgery (CSRF or XSRF) and cross-site script inclusion (XSSI). Even though these vulnerabilities need to be mitigated on server-side, Angular provides helpers to make the integration easier on the client side.
+     1. HttpClient supports a token mechanism used to prevent XSRF attacks
+     2. HttpClient library recognizes the convention of prefixed JSON responses(which non-executable js code with ")]}',\n" characters) and automatically strips the string ")]}',\n" from all responses before further parsing
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+173. ### What are Http Interceptors?
+     Http Interceptors are part of @angular/common/http, which inspect and transform HTTP requests from your application to the server and vice-versa on HTTP responses. These interceptors can perform a variety of implicit tasks, from authentication to logging. The syntax of HttpInterceptor interface looks like as below,
+     ```javascript
+     interface HttpInterceptor {
+       intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
+     }
+     ```
+     You can use interceptors by declaring a service class that implements the intercept() method of the HttpInterceptor interface.
+     ```javascript
+     @Injectable()
+     export class MyInterceptor implements HttpInterceptor {
+         constructor() {}
+         intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+             ...
+         }
+     }
+     ```
+     After that you can use it in your module,
+     ```javascript
+     @NgModule({
+         ...
+         providers: [
+             {
+                 provide: HTTP_INTERCEPTORS,
+                 useClass: MyInterceptor,
+                 multi: true
+             }
+         ]
+         ...
+     })
+     export class AppModule {}
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+174. ### What are the applications of HTTP interceptors?
+     The HTTP Interceptors can be used for different variety of tasks,
+
+     1. Authentication
+     2. Logging
+     3. Caching
+     4. Fake backend
+     5. URL transformation
+     6. Modifying headers
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+175. ### Is multiple interceptors supported in Angular?
+     Yes, Angular supports multiple interceptors at a time. You could define multiple interceptors in providers property:
+     ```javascript
+     providers: [
+       { provide: HTTP_INTERCEPTORS, useClass: MyFirstInterceptor, multi: true },
+       { provide: HTTP_INTERCEPTORS, useClass: MySecondInterceptor, multi: true }
+     ],
+     ```
+     The interceptors will be called in the order in which they were provided. i.e, MyFirstInterceptor will be called first in the above interceptors configuration.
+     **[⬆ Back to Top](#table-of-contents)**
+
+176. ### How can I use interceptor for an entire application?
+     You can use same instance of `HttpInterceptors` for the entire app by importing the `HttpClientModule` only in your AppModule, and add the interceptors to the root application injector.
+     For example, let's define a class that is injectable in root application.
+      ```javascript
+      @Injectable()
+      export class MyInterceptor implements HttpInterceptor {
+        intercept(
+          req: HttpRequest<any>,
+          next: HttpHandler
+        ): Observable<HttpEvent<any>> {
+
+          return next.handle(req).do(event => {
+            if (eventt instanceof HttpResponse) {
+                 // Code goes here
+            }
+          });
+
+        }
+      }
+      ```
+     After that import HttpClientModule in AppModule
+     ```javascript
+     @NgModule({
+       declarations: [AppComponent],
+       imports: [BrowserModule, HttpClientModule],
+       providers: [
+         { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }
+       ],
+       bootstrap: [AppComponent]
+     })
+     export class AppModule {}
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+177. ### How does Angular simplifies Internationalization?
+
+     Angular simplifies the below areas of internationalization,
+     1. Displaying dates, number, percentages, and currencies in a local format.
+     2. Preparing text in component templates for translation.
+     3. Handling plural forms of words.
+     4. Handling alternative text.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+178. ### How do you manually register locale data?
+     By default, Angular only contains locale data for en-US which is English as spoken in the United States of America . But if you want to set to another locale, you must import locale data for that new locale. After that you can register using `registerLocaleData` method and the syntax of this method looks like below,
+     ```javascript
+     registerLocaleData(data: any, localeId?: any, extraData?: any): void
+     ```
+     For example, let us import German locale and register it in the application
+     ```javascript
+     import { registerLocaleData } from '@angular/common';
+     import localeDe from '@angular/common/locales/de';
+
+     registerLocaleData(localeDe, 'de');
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+179. ### What are the four phases of template translation?
+     The i18n template translation process has four phases:
+
+     1. **Mark static text messages in your component templates for translation:** You can place i18n on every element tag whose fixed text is to be translated. For example, you need i18n attribue for heading as below,
+     ```javascript
+     <h1 i18n>Hello i18n!</h1>
+     ```
+
+     2. **Create a translation file:** Use the Angular CLI xi18n command to extract the marked text into an industry-standard translation source file. i.e, Open terminal window at the root of the app project and run the CLI command xi18n.
+     ```bash
+     ng xi18n
+     ```
+     The above command creates a file named `messages.xlf` in your project's root directory.
+     **Note:** You can supply command options to change the format, the name, the location, and the source locale of the extracted file.
+
+     3. **Edit the generated translation file:** Translate the extracted text into the target language. In this step, create a localization folder (such as `locale`)under root directory(src) and then create target language translation file by copying and renaming the default messages.xlf file. You need to copy source text node and provide the translation under target tag.
+     For example, create the translation file(messages.de.xlf) for German language
+     ```javascript
+     <trans-unit id="greetingHeader" datatype="html">
+       <source>Hello i18n!</source>
+       <target>Hallo i18n !</target>
+       <note priority="1" from="description">A welcome header for this sample</note>
+       <note priority="1" from="meaning">welcome message</note>
+     </trans-unit>
+     ```
+
+     4. **Merge the completed translation file into the app:** You need to use Angular CLI build command to compile the app, choosing a locale-specific configuration, or specifying the following command options.
+            1. --i18nFile=path to the translation file
+            2. --i18nFormat=format of the translation file
+            3. --i18nLocale= locale id
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+180. ### What is the purpose of i18n attribute?
+     The Angular i18n attribute marks translatable content. It is a custom attribute, recognized by Angular tools and compilers. The compiler removes it after translation.
+     **Note:** Remember that i18n is not an Angular directive.
+
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+181. ### What is the purpose of custom id?
+     When you change the translatable text, the Angular extractor tool generates a new id for that translation unit. Because of this behavior, you must then update the translation file with the new id every time.
+     For example, the translation file `messages.de.xlf.html` has generated trans-unit for some text message as below
+     ```html
+     <trans-unit id="827wwe104d3d69bf669f823jjde888" datatype="html">
+     ```
+     You can avoid this manual update of `id` attribute by specifying a custom id in the i18n attribute by using the prefix @@.
+     ```javascript
+     <h1 i18n="@@welcomeHeader">Hello i18n!</h1>
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+182. ### What happens if the custom id is not unique?
+     You need to define custom ids as unique. If you use the same id for two different text messages then only the first one is extracted. But its translation is used in place of both original text messages. For example, let's define same custom id `myCustomId` for two messages,
+     ```html
+     <h2 i18n="@@myCustomId">Good morning</h3>
+     <!-- ... -->
+     <h2 i18n="@@myCustomId">Good night</p>
+     ```
+     and the translation unit generated for first text in for German language as
+     ```html
+     <trans-unit id="myId" datatype="html">
+       <source>Good morning</source>
+       <target state="new">Guten Morgen</target>
+     </trans-unit>
+     ```
+     Since custom id is the same, both of the elements in the translation contain the same text as below
+     ```html
+     <h2>Guten Morgen</h2>
+     <h2>Guten Morgen</h2>
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+183. ### Can I translate text without creating an element?
+     Yes, you can achieve using `<ng-container>` attribute. Normally you need to wrap a text content with i18n attribute for the translation. But if you don't want to create a new DOM element just for the sake of translation, you can wrap the text in an <ng-container> element.
+     ```html
+     <ng-container i18n>I'm not using any DOM element for translation</ng-container>
+     ```
+     Remember that `<ng-container>` is transformed into an html comment
+     **[⬆ Back to Top](#table-of-contents)**
+
+184. ### How can I translate attribute?
+     You can translate attributes by attaching `i18n-x` attribute  where x is the name of the attribute to translate. For example, you can translate image title attribute as below,
+     ```html
+     <img [src]="example" i18n-title title="Internationlization" />
+     ```
+     By the way, you can also assign meaning, description and id with the i18n-x="<meaning>|<description>@@<id>" syntax.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+185. ### List down the pluralization categories?
+     Pluralization has below categories depending on the language.
+     1. =0 (or any other number)
+     2. zero
+     3. one
+     4. two
+     5. few
+     6. many
+     7. other
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+186. ### What is select ICU expression?
+     ICU expression is is similar to the plural expressions except that you choose among alternative translations based on a string value instead of a number. Here you define those string values.
+     Let's take component binding with `residenceStatus` property which has "citizen", "permanent resident" and "foreigner" possible values and the message maps those values to the appropriate translations.
+     ```javascript
+     <span i18n>The person is {residenceStatus, select, citizen {citizen} permanent resident {permanentResident} foreigner {foreigner}}</span>
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+187. ### How do you report missing translations?
+     By default, When translation is missing, it generates a warning message such as "Missing translation for message 'somekey'". But you can configure with a different level of message in Angular compiler as below,
+     1. **Error:** It throws an error. If you are using AOT compilation, the build will fail. But if you are using JIT compilation, the app will fail to load.
+     2. **Warning (default):** It shows a 'Missing translation' warning in the console or shell.
+     3. **Ignore:** It doesn't do anything.
+     If you use AOT compiler then you need to perform changes in `configurations` section of your Angular CLI configuration file, angular.json.
+     ```javascript
+     "configurations": {
+       ...
+       "de": {
+         ...
+         "i18nMissingTranslation": "error"
+       }
+     }
+     ```
+     If you use the JIT compiler, specify the warning level in the compiler config at bootstrap by adding the 'MissingTranslationStrategy' property as below,
+     ```javascript
+     import { MissingTranslationStrategy } from '@angular/core';
+     import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+     import { AppModule } from './app/app.module';
+
+     platformBrowserDynamic().bootstrapModule(AppModule, {
+       missingTranslation: MissingTranslationStrategy.Error,
+       providers: [
+         // ...
+       ]
+     });
+     ```
+     **[⬆ Back to Top](#table-of-contents)**
+188. ### How do you provide build configuration for multiple locales?
+     You can provide build configuration such as translation file path, name, format and application url in `configuration` settings of Angular.json file. For example, the German version of your application configured the build as follows,
+     ```javascript
+     "configurations": {
+       "de": {
+         "aot": true,
+         "outputPath": "dist/my-project-de/",
+         "baseHref": "/fr/",
+         "i18nFile": "src/locale/messages.de.xlf",
+         "i18nFormat": "xlf",
+         "i18nLocale": "de",
+         "i18nMissingTranslation": "error",
+       }
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+189. ### What is an angular library?
+     An Angular library is an Angular project that differs from an app in that it cannot run on its own. It must be imported and used in an app. For example,  you can import or add `service worker` library to an Angular application which turns an application into a Progressive Web App (PWA).
+     **Note:** You can create own third party library and publish it as npm package to be used in an Application.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+190. ### What is AOT compiler?
+     The AOT compiler is part of a build process that produces a small, fast, ready-to-run application package, typically for production. It converts your Angular HTML and TypeScript code into efficient JavaScript code during the build phase before the browser downloads and runs that code.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+191. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+192. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+193. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+194. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+195. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+196. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+197. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+198. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+199. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+200. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
