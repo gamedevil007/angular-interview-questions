@@ -196,16 +196,26 @@
 |188| [How do you provide build configuration for multiple locales?](#how-do-you-provide-build-configuration-for-multiple-locales)|
 |189| [What is an angular library?](#what-is-an-angular-library)|
 |190| [What is AOT compiler?](#what-is-aot-compiler)|
-|191| [](#)|
-|192| [](#)|
-|193| [](#)|
-|194| [](#)|
-|195| [](#)|
-|196| [](#)|
-|197| [](#)|
-|198| [](#)|
-|199| [](#)|
-|200| [](#)|
+|191| [How do you select an element in component template?](#how-do-you-select-an-element-in-component-template)|
+|192| [What is TestBed?](#what-is-testbed)|
+|193| [What is protractor?](#what-is-protractor)|
+|194| [What is collection?](#what-is-collection)|
+|195| [How do you create schematics for libraries?](#how-do-you-create-schematics-for-libraries)|
+|196| [How do you use jquery in Angular?](#how-do-you-use-jquery-in-angular)|
+|197| [What is the reason for No provider for HTTP exception?](#what-is-the-reason-for-no-provider-for-http-exception)|
+|198| [What is router state?](#what-is-router-state)|
+|199| [How can I use SASS in angular project?](#how-can-i-use-sass-in-angular-project)|
+|200| [What is the purpose of hidden property?](#what-is-the-purpose-of-hidden-property)|
+|201| [What is the difference between ngIf and hidden property?](#what-is-the-difference-between-ngif-and-hidden-property)|
+|202| [What is slice pipe?](#what-is-slice-pipe)|
+|203| [What is index property in ngFor directive?](#what-is-index-property-in-ngfor-directive)|
+|204| [What is the purpose of ngFor trackBy?](#what-is-the-purpose-of-ngfor-trackby)|
+|205| [](#)|
+|206| [](#)|
+|207| [](#)|
+|208| [](#)|
+|209| [](#)|
+|210| [](#)|
 
 1. ### What is Angular Framework?
 
@@ -2443,8 +2453,8 @@
         • TypeScript 3.1
         • RxJS 6.3
         • New Angular CLI
-        • CLI Prompts capability provide an ability to ask questions to the user before they run. It is like interactive dialog between the           user and the CLI
-        • With the improved CLI Prompts capability, it helps developers to make the decision. New ng commands ask users for routing and CSS           styles types(SCSS) and ng add @angular/material asks for themes and gestures or animations.
+        • CLI Prompts capability provide an ability to ask questions to the user before they run. It is like interactive dialog between the user and the CLI
+        • With the improved CLI Prompts capability, it helps developers to make the decision. New ng commands ask users for routing and CSS styles types(SCSS) and ng add @angular/material asks for themes and gestures or animations.
 
       **[⬆ Back to Top](#table-of-contents)**
 
@@ -2916,42 +2926,202 @@
 
      **[⬆ Back to Top](#table-of-contents)**
 
-191. ### ?
+191. ### How do you select an element in component template?
+     You can control any DOM element via ElementRef by injecting it into your component's constructor. i.e, The component should have constructor with ElementRef parameter,
+     ```javascript
+     constructor(myElement: ElementRef) {
+        el.nativeElement.style.backgroundColor = 'yellow';
+     }
+     ```
 
      **[⬆ Back to Top](#table-of-contents)**
 
-192. ### ?
+192. ### What is TestBed?
+     TestBed is an api for writing unit tests for Angular applications and it's libraries. Even though We still write our tests in Jasmine and run using Karma, this API provides an easier way to create components, handle injection, test asynchronous behaviour and interact with our application.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-193. ### ?
+193. ### What is protractor?
+     Protractor is an end-to-end test framework for Angular and AngularJS applications. It runs tests against your application running in a real browser, interacting with it as a user would.
+     ```javascript
+     npm install -g protractor
+     ```
 
      **[⬆ Back to Top](#table-of-contents)**
 
-194. ### ?
+194. ### What is collection?
+     Collection is a set of related schematics collected in an npm package. For example, `@schematics/angular` collection is used in Angular CLI to apply transforms to a web-app project. You can create your own schematic collection for customizing angular projects.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-195. ### ?
+195. ### How do you create schematics for libraries?
+     You can create your own schematic collections to integrate your library with the Angular CLI. These collections are classified as 3 main schematics,
+     1. **Add schematics:** These schematics are used to install library in an Angular workspace using `ng add` command.
+        For example, @angular/material schematic tells the add command to install and set up Angular Material and theming.
+     2. **Generate schematics**: These schematics are used to modify projects, add configurations and scripts, and scaffold artifacts in library using `ng generate` command.
+        For example, @angular/material generation schematic supplies generation schematics for the UI components. Let's say the table component is generated using `ng generate @angular/material:table `.
+     3. **Update schematics:** These schematics are used to update library's dependencies and adjust for breaking changes in a new library release using `ng update` command.
+        For example, @angular/material update schematic updates material and cdk dependencies using `ng update @angular/material` command.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-196. ### ?
+196. ### How do you use jquery in Angular?
+     You can use jquery in Angular using 3 simple steps,
+     1. Install the dependency: At first, install the jquery dependency using npm
+     ```cmd
+        npm install --save jquery
+     ```
+     2. Add the jquery script: In Angular-CLI project, add the relative path to jquery in the angular.json file.
+     ```javascript
+     "scripts": [
+        "node_modules/jquery/dist/jquery.min.js"
+     ]
+     ```
+     3. Start using jquery: Define the element in template. Whereas declare the jquery variable and apply CSS classes on the element.
+     ```html
+     <div id="elementId">
+       <h1>JQuery integration</h1>
+     </div>
+     ```
+     ```javascript
+     import {Component, OnInit} from '@angular/core';
+
+     declare var $: any; // (or) import * as $ from 'jquery';
+
+     @Component({
+       selector: 'app-root',
+       templateUrl: './app.component.html',
+       styleUrls: ['./app.component.css']
+     })
+     export class AppComponent implements OnInit {
+       ngOnInit(): void {
+         $(document).ready(() => {
+           $('#elementId').css({'text-color': 'blue', 'font-size': '150%'});
+         });
+       }
+     }
+     ```
 
      **[⬆ Back to Top](#table-of-contents)**
 
-197. ### ?
+197. ### What is the reason for No provider for HTTP exception?
+     This exception is due to missing HttpClientModule in your module. You just need to import in module as below,
+     ```javascript
+     import { HttpClientModule } from '@angular/common/http';
+
+     @NgModule({
+       imports: [
+         BrowserModule,
+         HttpClientModule,
+       ],
+       declarations: [ AppComponent ],
+       bootstrap:    [ AppComponent ]
+     })
+     export class AppModule { }
+     ```
 
      **[⬆ Back to Top](#table-of-contents)**
 
-198. ### ?
+198. ### What is router state?
+     The RouteState is an interface which represents the state of the router as a tree of activated routes.
+     ```javascript
+     interface RouterState extends Tree {
+       snapshot: RouterStateSnapshot
+       toString(): string
+     }
+     ```
+     You can access the current RouterState from anywhere in the Angular app using the Router service and the routerState property.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-199. ### ?
+199. ### How can I use SASS in angular project?
+     When you are creating your project with angular cli, you can use `ng new`command. It generates all your components with predefined sass files.
+     ```javascript
+     ng new My_New_Project --style=sass
+     ```
+     But if you are changing your existing style in your project then use `ng set` command,
+     ```javascript
+     ng set defaults.styleExt scss
+     ```
+     **[⬆ Back to Top](#table-of-contents)**
+
+200. ### What is the purpose of hidden property?
+     The hidden property is used  to show or hide the associated DOM element, based on an expression. It can be compared close to `ng-show` directive in AngularJS. Let's say you want to show user name based on the availability of user using `hidden` property.
+     ```javascript
+     <div [hidden]="!user.name">
+       My name is: {{user.name}}
+     </div>
+     ```
+     **[⬆ Back to Top](#table-of-contents)**
+
+201. ### What is the difference between ngIf and hidden property?
+     The main difference is that *ngIf will remove the element from the DOM, while [hidden] actually plays with the CSS style by setting `display:none`. Generally it is expensive to add and remove stuff from the DOM for frequent actions.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-200. ### ?
+202. ### What is slice pipe?
+     The slice pipe is used to create a new Array or String containing a subset (slice) of the elements. The syntax looks like as below,
+     ```javascript
+     {{ value_expression | slice : start [ : end ] }}
+     ```
+     For example, you can provide 'hello' list based on a greeting array,
+     ```javascript
+     @Component({
+       selector: 'list-pipe',
+       template: `<ul>
+         <li *ngFor="let i of greeting | slice:0:5">{{i}}</li>
+       </ul>`
+     })
+     export class PipeListComponent {
+       greeting: string[] = ['h', 'e', 'l', 'l', 'o', 'm','o', 'r', 'n', 'i', 'n', 'g'];
+     }
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+203. ### What is index property in ngFor directive?
+     The index property of the NgFor directive is used to return the zero-based index of the item in each iteration. You can capture the index in a template input variable and use it in the template. For example, you can capture the index in a variable named indexVar and displays it with the todo's name using ngFor directive as below.
+     ```javascript
+     <div *ngFor="let todo of todos; let i=index">{{i + 1}} - {{todo.name}}</div>
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+204. ### What is the purpose of ngFor trackBy?
+     The main purpose of using *ngFor with trackBy option is performance optimization. Normally if you use NgFor with large data sets, a small change to one item by removing or adding an item, can trigger a cascade of DOM manipulations. In this case, Angular sees only a fresh list of new object references and to replace the old DOM elements with all new DOM elements. You can help Angular to track which items added or removed by providing a `trackBy` function which takes the index and the current item as arguments and needs to return the unique identifier for this item.
+     For example, lets set trackBy to the trackByTodos() method
+     ```javascript
+     <div *ngFor="let todo of todos; trackBy: trackByTodos">
+       ({{todo.id}}) {{todo.name}}
+     </div>
+     ```
+     and define the trackByTodos method,
+     ```javascript
+     trackByTodos(index: number, item: Todo): number { return todo.id; }
+     ```
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+205. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+206. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+207. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+208. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+209. ### ?
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+210. ### ?
 
      **[⬆ Back to Top](#table-of-contents)**
