@@ -3,18 +3,24 @@
 > Click :star:if you like the project. Pull Request are highly appreciated. Follow me [@SudheerJonna](https://twitter.com/SudheerJonna) for technical updates.
 
 ---
-
 <div align="center">
-    <p>
         <a href="https://www.fullstack.cafe/?utm_source=github&utm_medium=sud">
-            <b>Having Tech Interview?</b>
-            <br> 3600 Tech Interview Questions. <b>Answered</b>.
-            <br>
+            3600 Tech Interview Questions. <b>Answered</b>.
             <div>
-                <img src="https://user-images.githubusercontent.com/13550565/76382460-cc784d80-6393-11ea-8837-2b89265ac853.png" width="260" alt="FullStack.Cafe">
+                <img src="https://user-images.githubusercontent.com/13550565/76382460-cc784d80-6393-11ea-8837-2b89265ac853.png" width="150" alt="FullStack.Cafe">
             </div>
         </a>
-        <sub><i>Proudly supporting Angular Interview Questions</i></sub>
+</div>
+
+---
+<div align="center">
+    <p>
+        <a href="https://youtu.be/-jeoyDJDsSM">
+            20 Angular interview questions with answers video.
+            <div>
+                <img src="https://img.youtube.com/vi/-jeoyDJDsSM/0.jpg" width="150" height="100" alt="Angular">
+            </div>
+        </a>
     </p>
 </div>
 
@@ -723,7 +729,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
 23. ### What happens if you use script tag inside template?
 
-    Angular recognizes the value as unsafe and automatically sanitizes it, which removes the **<script>** tag but keeps safe content such as the text content of the <script> tag. This way it eliminates the risk of script injection attacks. If you still use it then it will be ignored and a warning appears in the browser console.
+    Angular recognizes the value as unsafe and automatically sanitizes it, which removes the `script` tag but keeps safe content such as the text content of the `script` tag. This way it eliminates the risk of script injection attacks. If you still use it then it will be ignored and a warning appears in the browser console.
 
     Let's take an example of innerHtml property binding which causes XSS vulnerability,
     ```typescript
@@ -878,7 +884,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
 32. ### Give an example of custom pipe?
     You can create custom reusable pipes for the transformation of existing value. For example, let us create a custom pipe for finding file size based on an extension,
-        ```javascript
+      ```javascript
         import { Pipe, PipeTransform } from '@angular/core';
 
         @Pipe({name: 'customFileSizePipe'})
@@ -887,14 +893,14 @@ You can download the PDF and Epub version of this repository from the latest run
             return (size / (1024 * 1024)).toFixed(2) + extension;
           }
         }
-        ```
+      ```
     Now you can use the above pipe in template expression as below,
-        ```javascript
+      ```javascript
          template: `
             <h2>Find the size of a file</h2>
             <p>Size: {{288966 | customFileSizePipe: 'GB'}}</p>
           `
-        ```
+      ```
 
   **[⬆ Back to Top](#table-of-contents)**
 
