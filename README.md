@@ -16,7 +16,7 @@
 <div align="center">
     <p>
         <a href="https://youtu.be/-jeoyDJDsSM">
-            20 Angular interview questions with answers video.
+            25 Angular interview questions with answers video.
             <div>
                 <img src="https://img.youtube.com/vi/-jeoyDJDsSM/0.jpg" width="150" height="100" alt="Angular">
             </div>
@@ -116,7 +116,7 @@ You can download the PDF and Epub version of this repository from the latest run
 |80| [What are the advantages with AOT?](#what-are-the-advantages-with-aot)|
 |81| [What are the ways to control AOT compilation?](#what-are-the-ways-to-control-aot-compilation)|
 |82| [What are the restrictions of metadata?](#what-are-the-restrictions-of-metadata)|
-|83| [What are the two phases of AOT?](#what-are-the-two-phases-of-aot)|
+|83| [What are the three phases of AOT?](#what-are-the-three-phases-of-aot)|
 |84| [Can I use arrow functions in AOT?](#can-i-use-arrow-functions-in-aot)|
 |85| [What is the purpose of metadata json files?](#what-is-the-purpose-of-metadata-json-files)|
 |86| [Can I use any javascript feature for expression syntax in AOT?](#can-i-use-any-javascript-feature-for-expression-syntax-in-aot)|
@@ -324,8 +324,8 @@ You can download the PDF and Epub version of this repository from the latest run
 
     | AngularJS | Angular |
     |---- | ---------
-    | It is based on MVC architecture  | This is based on Service/Controller |
-    | This uses use JavaScript to build the application| Introduced the typescript to write the application |
+    | It is based on MVC architecture| This is based on Service/Controller|
+    | It uses JavaScript to build the application| Introduced the TypeScript to write the application|
     | Based on controllers concept| This is a component based UI approach|
     | Not a mobile friendly framework| Developed considering mobile platform|
     | Difficulty in SEO friendly application development| Ease to create SEO friendly applications|
@@ -1587,7 +1587,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
   **[⬆ Back to Top](#table-of-contents)**
 
-83. ### What are the two phases of AOT?
+83. ### What are the three phases of AOT?
     The AOT compiler works in three phases,
     1. **Code Analysis:** The compiler records a representation of the source
     2. **Code generation:** It handles the interpretation as well as places restrictions on what it interprets.
